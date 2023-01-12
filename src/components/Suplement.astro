@@ -1,0 +1,64 @@
+---
+import { Image } from "@astrojs/image/components";
+
+import kirk from "../assets/crew/1.jpeg";
+import spoke from "../assets/crew/2.jpeg";
+import mccoy from "../assets/crew/3.jpeg";
+---
+
+<div id="suplement" class="suplement slot">
+  <figure class="suplement-item">
+    <Image alt="Capitan Kirk" height="800" src={kirk} format="webp" />
+    <figcaption>James T. Kirk</figcaption>
+  </figure>
+  <figure class="suplement-item">
+    <Image alt="Spoke" height="800" src={spoke} format="webp" />
+    <figcaption>Mr. Spoke</figcaption>
+  </figure>
+  <figure class="suplement-item">
+    <Image alt="Dr. McCoy" height="800" src={mccoy} format="webp" />
+    <figcaption>Dr. Leonard McCoy</figcaption>
+  </figure>
+</div>
+
+<style>
+  /* Crew */
+  .suplement {
+    text-align: center;
+  }
+
+  .suplement figcaption {
+    padding: 15px;
+    font-style: italic;
+  }
+
+  .suplement-item {
+    margin: 0;
+    margin-left: 1%;
+    display: inline-block;
+    width: 32%;
+  }
+
+  .suplement-item img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .suplement-item:first-child {
+    margin-left: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .suplement-item {
+      width: 40%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .suplement-item {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+</style>

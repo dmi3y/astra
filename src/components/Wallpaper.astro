@@ -1,0 +1,113 @@
+---
+import { getImage } from "@astrojs/image";
+const wallpaperRefsRaw = await Astro.glob("../assets/wallpapers/*.jpeg");
+
+const wallpaperReft = await Promise.all(
+  wallpaperRefsRaw.map((ref) => {
+    ref.default.format = "webp";
+    return getImage(ref.default);
+  })
+);
+const wallpapers = wallpaperReft.map((wallpaper) => wallpaper.src);
+---
+
+<input data-nosnippet type="checkbox" id="show-wallpaper" />
+<label for="show-wallpaper" id="show-wallpaper-lbl"
+  ><div data-nosnippet>Show <strong>Space</strong><b>Mission</b></div>
+</label>
+<div data-nosnippet id="wallpaper" class="wallpaper">
+  <div
+    data-wallpaper-index="0"
+    data-wallpaper-set={wallpapers}
+    style={`background-image: url(${wallpapers[0]})`}
+  >
+  </div>
+</div>
+<script>
+  const wallpaper = document.querySelector("#wallpaper div") as HTMLElement;
+  const wallpaperSet = wallpaper.dataset.wallpaperSet?.split(",") || [];
+
+  wallpaper.addEventListener("animationiteration", (e) => {
+    const target = e.target as HTMLElement;
+    let n = Number(target.dataset.wallpaperIndex);
+    n = n < wallpaperSet.length - 1 ? n + 1 : 0;
+    const newWallpaper = wallpaperSet[n];
+    target.dataset.wallpaperIndex = String(n);
+    wallpaper.style.backgroundImage = `url(${newWallpaper})`;
+  });
+</script>
+<style is:global>
+  /* Wallpaper */
+  #show-wallpaper {
+    display: none;
+  }
+
+  #show-wallpaper:checked + #show-wallpaper-lbl b {
+    display: inline;
+  }
+
+  #show-wallpaper:checked + #show-wallpaper-lbl strong {
+    display: none;
+  }
+
+  #show-wallpaper-lbl {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    z-index: 30;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    padding: 5px 3px;
+  }
+
+  #show-wallpaper-lbl div {
+    padding: 15px 1px;
+    background-color: var(--bg-color-opacity);
+  }
+
+  #show-wallpaper:checked ~ #main-holder {
+    display: none;
+  }
+
+  #show-wallpaper-lbl:hover ~ #main-holder {
+    opacity: 0.4;
+  }
+
+  #show-wallpaper-lbl b {
+    display: none;
+  }
+
+  .wallpaper {
+    background-color: var(--bg-color);
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+  }
+  .wallpaper div {
+    animation: var(--wallpaper-animation-name)
+      var(--wallpaper-animation-duration) linear infinite;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    #show-wallpaper-lbl {
+      width: 100%;
+      writing-mode: horizontal-tb;
+      top: 0;
+      text-align: center;
+    }
+    #show-wallpaper-lbl > div {
+      padding: 14px;
+    }
+
+    #show-wallpaper-lbl:hover ~ #main-holder {
+      opacity: 1;
+    }
+  }
+</style>

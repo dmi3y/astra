@@ -1,0 +1,49 @@
+<footer>
+  <section id="contacts" class="contacts slot">
+    <p>
+      Background photos by <a
+        href="https://unsplash.com/@nasa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >NASA</a
+      > on <a
+        href="https://unsplash.com/images/nature/space?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >Unsplash</a
+      >
+    </p>
+  </section>
+</footer>
+
+<style>
+  /* Footer */
+  footer {
+    text-align: center;
+  }
+
+  footer > section {
+    background-color: var(--bg-color-opacity);
+  }
+
+  footer > section:target {
+    animation-name: flash;
+    animation-duration: 1s;
+  }
+
+  .contacts {
+    padding: 15px 15px 45px;
+  }
+
+  @media (max-width: 1170px) {
+    .footer-separator-insta {
+      display: block;
+      color: transparent;
+      line-height: 0.5;
+    }
+  }
+
+  @media (max-width: 795px) {
+    .footer-separator {
+      display: block;
+      color: transparent;
+      line-height: 0.5;
+    }
+  }
+</style>

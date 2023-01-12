@@ -1,0 +1,57 @@
+<header>
+  <a draggable="false" title="Earth" href="/#">
+    <h1>★stra</h1>
+    <div class="motto">Per Aspera Ad Astra</div>
+  </a>
+</header>
+
+<div class="clr"></div>
+<style is:global>
+  /* Header */
+  @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+
+  header {
+    padding-top: 70pt;
+    display: flex;
+    flex-direction: row-reverse;
+    user-select: none;
+  }
+  header h1 {
+    font-size: 510%;
+    font-family: "Alfa Slab One", cursive;
+    text-shadow: 1px 5px 7px var(--bg-color);
+    color: var(--link-color);
+    line-height: 1;
+    margin: 0;
+  }
+
+  header h1::first-letter {
+    font-size: 110%;
+  }
+
+  header a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  header a:hover {
+    text-decoration: none;
+  }
+
+  .motto {
+    font-weight: 600;
+    text-shadow: 1px 5px 7px var(--bg-color);
+    text-align: right;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header {
+      margin-top: 0;
+      justify-content: center;
+    }
+    .motto {
+      font-weight: 600;
+    }
+  }
+</style>

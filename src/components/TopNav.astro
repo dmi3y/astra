@@ -1,0 +1,75 @@
+<nav>
+  <ul class="menu">
+    <li>
+      <a href="#main"><span data-nosnippet>Mission</span></a>
+    </li>
+    <li>
+      <a href="#suplement"><span data-nosnippet>Frontiers</span></a>
+    </li>
+    <li><a href="#contacts"><span data-nosnippet>Communicator</span></a></li>
+  </ul>
+</nav>
+<div class="clr"></div>
+
+<style is:global>
+  /* Menu */
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu a {
+    color: var(--font-color);
+  }
+
+  .menu a:hover {
+    text-decoration: none;
+    color: var(--link-color);
+  }
+
+  .menu li {
+    background-color: var(--bg-color-opacity);
+    float: left;
+    margin: 0 0 1px 1px;
+    font-size: 1.3rem;
+    width: calc((100% - 32px) / 3);
+    text-align: center;
+    padding: 10px 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .menu li:first-child {
+    margin-left: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .menu li {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .menu li {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .menu {
+      margin-top: 67px;
+    }
+    .menu li {
+      float: none;
+      width: 100%;
+      margin: 0 0 1px 0;
+      font-size: 1.3rem;
+    }
+
+    .menu li a {
+      display: block;
+    }
+  }
+</style>
