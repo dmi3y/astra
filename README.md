@@ -4,6 +4,7 @@
 
 [Astro](https://astro.build/) template to boldly go where no one has gone before!
 
+![screenshot](./public/screenshot_0.png)
 See [preview](https://astra-project.vercel.app)
 
 ## Highlights
@@ -11,7 +12,7 @@ See [preview](https://astra-project.vercel.app)
 - CSS first
 - No libraries
 - Responsive
-- Mostly works ~~in vacuum~~ no js
+- Mostly works ~~in vacuum~~ with javascript turned off
 
 ## Mission
 
