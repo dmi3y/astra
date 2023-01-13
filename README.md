@@ -15,6 +15,6 @@ See [preview](https://astra-project.vercel.app)
 
 ## Mission
 
-Push the boundaries of what can be done with plain css/html and bit of vanilla javascript.
+Pushing the boundaries of what can be done with plain CSS/HTML and a bit of vanilla javascript.
 
 Live long and prosper :rocket:
