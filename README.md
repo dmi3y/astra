@@ -11,7 +11,7 @@ See [preview](https://astra-project.vercel.app)
 - CSS first
 - No libraries
 - Responsive
-- Mostly works ~~in vacuum~~ with JS off
+- Mostly works ~~in vacuum~~ no js
 
 ## Mission
 
