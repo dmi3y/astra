@@ -26,6 +26,9 @@ import mccoy from "../assets/crew/3.jpeg";
   .suplement {
     text-align: center;
     animation-delay: 0.8s;
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
   }
 
   .suplement figcaption {
@@ -35,31 +38,32 @@ import mccoy from "../assets/crew/3.jpeg";
 
   .suplement-item {
     margin: 0;
-    margin-left: 1%;
-    display: inline-block;
-    width: 32%;
+    height: 100%;
   }
 
   .suplement-item img {
     width: 100%;
     height: 100%;
-  }
-
-  .suplement-item:first-child {
-    margin-left: 0;
+    object-fit: cover;
   }
 
   /* Responsive */
   @media (max-width: 1024px) {
+    .suplement {
+      flex-wrap: wrap;
+    }
     .suplement-item {
-      width: 40%;
+      width: 45%;
+      flex-shrink: 0;
     }
   }
 
   @media (max-width: 600px) {
+    .suplement {
+      flex-direction: column;
+    }
     .suplement-item {
       width: 100%;
-      margin-left: 0;
     }
   }
 </style>
