@@ -81,7 +81,6 @@ const { frontmatter } = Astro.props;
     --flash-color: rgb(255, 255, 255);
     --flash-color-opacity: rgba(255, 255, 255, 0.9);
     --flash-animation-duration: 1.5s;
-    --flash-animation-delay: 0.5s;
 
     --wallpaper-animation-duration: 15s;
     --wallpaper-animation-name: breath;
@@ -135,9 +134,12 @@ const { frontmatter } = Astro.props;
   }
 
   .slot:target {
-    animation: flash;
+    animation-name: flash;
     animation-duration: var(--flash-animation-duration);
-    animation-delay: var(--flash-animation-delay);
+  }
+
+  section {
+    animation-delay: 0.5s;
   }
 
   /* Responsive */
