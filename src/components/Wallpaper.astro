@@ -1,14 +1,14 @@
 ---
-import { getImage } from "@astrojs/image";
-const wallpaperRefsRaw = await Astro.glob("../assets/wallpapers/*.jpeg");
+export interface Props {
+  wallpapers: string[];
+}
 
-const wallpaperReft = await Promise.all(
-  wallpaperRefsRaw.map((ref) => {
-    ref.default.format = "webp";
-    return getImage(ref.default);
-  })
-);
-const wallpapers = wallpaperReft.map((wallpaper) => wallpaper.src);
+const { wallpapers } = Astro.props;
+
+const wallperperVars: { [key: string]: string } = {};
+wallpapers.forEach((src, idx) => {
+  if (src) wallperperVars[`wallpaper-${idx}`] = `url(${src})`;
+});
 ---
 
 <input data-nosnippet type="checkbox" id="show-wallpaper" />
@@ -16,28 +16,61 @@ const wallpapers = wallpaperReft.map((wallpaper) => wallpaper.src);
   ><div data-nosnippet>Show <strong>Space</strong><b>Mission</b></div>
 </label>
 <div data-nosnippet id="wallpaper" class="wallpaper">
-  <div
-    data-wallpaper-index="0"
-    data-wallpaper-set={wallpapers}
-    style={`background-image: url(${wallpapers[0]})`}
-  >
-  </div>
+  <div></div>
 </div>
-<script>
-  const wallpaper = document.querySelector("#wallpaper div") as HTMLElement;
-  const wallpaperSet = wallpaper.dataset.wallpaperSet?.split(",") || [];
-
-  wallpaper.addEventListener("animationiteration", (e) => {
-    const target = e.target as HTMLElement;
-    let n = Number(target.dataset.wallpaperIndex);
-    n = n < wallpaperSet.length - 1 ? n + 1 : 0;
-    const newWallpaper = wallpaperSet[n];
-    target.dataset.wallpaperIndex = String(n);
-    wallpaper.style.backgroundImage = `url(${newWallpaper})`;
-  });
-</script>
-<style is:global>
+<style is:global define:vars={{ ...wallperperVars }}>
   /* Wallpaper */
+
+  @keyframes wallpapers {
+    0.01% {
+      background-image: var(--wallpaper-1);
+    }
+    25% {
+      background-image: var(--wallpaper-1);
+    }
+    25.01% {
+      background-image: var(--wallpaper-2);
+    }
+    50% {
+      background-image: var(--wallpaper-2);
+    }
+    50.01% {
+      background-image: var(--wallpaper-3);
+    }
+    75% {
+      background-image: var(--wallpaper-3);
+    }
+    75.01% {
+      background-image: var(--wallpaper-0);
+    }
+    100% {
+      background-image: var(--wallpaper-0);
+    }
+  }
+
+  @keyframes fadeinout {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes panin {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.03);
+    }
+  }
   #show-wallpaper {
     display: none;
   }
@@ -78,14 +111,20 @@ const wallpapers = wallpaperReft.map((wallpaper) => wallpaper.src);
   }
 
   .wallpaper {
+    --wallpaper-bg-color: rgb(0, 0, 0);
+
     background-color: var(--wallpaper-bg-color);
     position: fixed;
     inset: 0;
     z-index: -10;
   }
   .wallpaper div {
-    animation: var(--wallpaper-animation-name)
-      var(--wallpaper-animation-duration) linear infinite;
+    animation-name: wallpapers, fadeinout, panin;
+    animation-duration: 8s, 2s, 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    background-image: var(--wallpaper-0);
+
     background-repeat: no-repeat;
     background-position: 50% 0;
     background-size: cover;

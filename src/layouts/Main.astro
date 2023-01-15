@@ -5,6 +5,19 @@ import TopNav from "../components/TopNav.astro";
 import Suplement from "../components/Suplement.astro";
 import Footer from "../components/Footer.astro";
 
+import { getImage } from "@astrojs/image";
+const wallpaperRefsRaw = await Astro.glob("../assets/wallpapers/*.jpeg");
+
+const wallpaperReft = await Promise.all(
+  wallpaperRefsRaw.map((ref) => {
+    ref.default.format = "webp";
+    return getImage(ref.default);
+  })
+);
+const wallpapers = wallpaperReft
+  .map((wallpaper) => wallpaper.src)
+  .filter((src): src is string => typeof src === "string");
+
 export interface Props {
   frontmatter: {
     title: string;
@@ -36,12 +49,13 @@ const { frontmatter } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
       rel="stylesheet"
     />
+    {wallpapers.map((wp) => <link rel="preload" as="image" href={wp} />)}
     <title>{frontmatter.title}</title>
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={frontmatter.description} />
   </head>
   <body class="page">
-    <Wallpaper />
+    <Wallpaper wallpapers={wallpapers} />
     <main id="main-holder" class="wrapper">
       <TopNav />
       <Header />
@@ -56,28 +70,8 @@ const { frontmatter } = Astro.props;
 
 <style is:global>
   @keyframes flash {
-    from {
-      background-color: var(--flash-color-opacity);
-    }
-  }
-
-  @keyframes breath {
     0% {
-      transform: scale(1);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    95% {
-      opacity: 1;
-    }
-    99% {
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1.1);
-      opacity: 0;
+      background-color: var(--flash-color-opacity);
     }
   }
   :root {
@@ -86,10 +80,6 @@ const { frontmatter } = Astro.props;
     --flash-color: rgb(255, 255, 255);
     --flash-color-opacity: rgba(255, 255, 255, 0.9);
     --flash-animation-duration: 1.5s;
-
-    --wallpaper-animation-duration: 15s;
-    --wallpaper-animation-name: breath;
-    --wallpaper-bg-color: rgb(0, 0, 0);
 
     --bg-color: rgb(0, 0, 0);
     --bg-color-opacity: rgba(0, 0, 0, 0.9);
