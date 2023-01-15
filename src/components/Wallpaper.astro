@@ -58,7 +58,6 @@ const wallpapers = wallpaperReft.map((wallpaper) => wallpaper.src);
     cursor: pointer;
     writing-mode: vertical-rl;
     text-orientation: sideways;
-    padding: 3px;
   }
 
   #show-wallpaper-lbl div {
@@ -97,9 +96,10 @@ const wallpapers = wallpaperReft.map((wallpaper) => wallpaper.src);
   /* Responsive */
   @media (max-width: 600px) {
     #show-wallpaper-lbl {
-      width: 100%;
       writing-mode: horizontal-tb;
-      top: 0;
+      top: 2px;
+      left: 2px;
+      right: 2px;
       text-align: center;
     }
     #show-wallpaper-lbl > div {
