@@ -49,7 +49,9 @@ const { frontmatter } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
       rel="stylesheet"
     />
-    {wallpapers.map((wp) => <link rel="preload" as="image" href={wp} />)}
+    {
+      //wallpapers.map((wp) => <link rel="preload" as="image" href={wp} />)
+    }
     <title>{frontmatter.title}</title>
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={frontmatter.description} />
