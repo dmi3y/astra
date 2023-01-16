@@ -9,7 +9,6 @@
     <li><a href="#contacts"><span data-nosnippet>Communicator</span></a></li>
   </ul>
 </nav>
-<div class="clr"></div>
 
 <style is:global>
   /* Menu */
@@ -17,6 +16,8 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    line-height: 1.1;
   }
 
   .menu a {
@@ -30,7 +31,6 @@
 
   .menu li {
     background-color: var(--bg-color-opacity);
-    float: left;
     margin: 0 0 1px 1px;
     font-size: 1.3rem;
     width: calc((100% - 2px) / 3);
@@ -59,10 +59,10 @@
 
   @media (max-width: 600px) {
     .menu {
+      flex-direction: column;
       margin-top: 65px;
     }
     .menu li {
-      float: none;
       width: 100%;
       margin: 0 0 1px 0;
       font-size: 1.3rem;

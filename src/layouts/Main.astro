@@ -59,7 +59,7 @@ const { frontmatter } = Astro.props;
     <main id="main-holder" class="wrapper">
       <TopNav />
       <Header />
-      <section id="main" class="slot">
+      <section id="main" class="main slot">
         <slot />
       </section>
       <Suplement />
@@ -86,12 +86,10 @@ const { frontmatter } = Astro.props;
 
     --font-family-main: Verdana, Geneva, sans-serif;
     --font-size-main: 20pt;
+    --line-height-main: 1.5;
     --font-color: rgb(255, 255, 255);
 
     --link-color: rgb(252, 97, 8);
-  }
-  .clr {
-    clear: both;
   }
 
   html,
@@ -128,6 +126,9 @@ const { frontmatter } = Astro.props;
     margin-top: 35px;
   }
 
+  .main {
+    line-height: var(--line-height-main);
+  }
   .slot:target {
     animation-name: flash;
     animation-duration: var(--flash-animation-duration);
