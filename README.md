@@ -1,6 +1,6 @@
 # ★stra
 
-> Jim, he's ~~dead~~ alive!
+> Jim, he's alive!
 
 [Astro](https://astro.build/) template to boldly go where no one has gone before!
 
