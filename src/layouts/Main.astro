@@ -4,7 +4,6 @@ import type { CollectionEntry } from "astro:content";
 import Wallpaper from "../components/Wallpaper.astro";
 import Header from "../components/Header.astro";
 import TopNav from "../components/TopNav.astro";
-import Suplement from "../components/Suplement.astro";
 import Footer from "../components/Footer.astro";
 
 import { getImage } from "@astrojs/image";
@@ -62,7 +61,7 @@ const { Content } = await post.render();
       <section id="main" class="main slot">
         <Content />
       </section>
-      <Suplement />
+      <slot />
       <Footer />
     </main>
   </body>

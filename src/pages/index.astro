@@ -1,8 +1,11 @@
 ---
 import { getEntry } from "astro:content";
 import Main from "../layouts/Main.astro";
+import Suplement from "../components/Suplement.astro";
 
-const index = await getEntry("posts", "index");
+const index = await getEntry("posts", "welcome");
 ---
 
-<Main post={index} />
+<Main post={index}>
+  <Suplement />
+</Main>
