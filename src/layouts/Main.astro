@@ -1,4 +1,6 @@
 ---
+import type { CollectionEntry } from "astro:content";
+
 import Wallpaper from "../components/Wallpaper.astro";
 import Header from "../components/Header.astro";
 import TopNav from "../components/TopNav.astro";
@@ -19,13 +21,11 @@ const wallpapers = wallpaperReft
   .filter((src): src is string => typeof src === "string");
 
 export interface Props {
-  frontmatter: {
-    title: string;
-    description: string;
-  };
+  post: CollectionEntry<"posts">;
 }
 
-const { frontmatter } = Astro.props;
+const { post } = Astro.props;
+const { Content } = await post.render();
 ---
 
 <!DOCTYPE html>
@@ -50,9 +50,9 @@ const { frontmatter } = Astro.props;
       rel="stylesheet"
     />
     <link rel="preload" as="image" href={wallpapers[0]} />
-    <title>{frontmatter.title}</title>
+    <title>{post.data.title}</title>
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={frontmatter.description} />
+    <meta name="description" content={post.data.description} />
   </head>
   <body class="page">
     <Wallpaper wallpapers={wallpapers} />
@@ -60,7 +60,7 @@ const { frontmatter } = Astro.props;
       <TopNav />
       <Header />
       <section id="main" class="main slot">
-        <slot />
+        <Content />
       </section>
       <Suplement />
       <Footer />
@@ -81,7 +81,7 @@ const { frontmatter } = Astro.props;
     --flash-color-opacity: rgba(255, 255, 255, 0.9);
     --flash-animation-duration: 1.5s;
 
-    --bg-color: rgb(0, 0, 0);
+    --bg-color: rgb(10, 7, 20);
     --bg-color-opacity: rgba(0, 0, 0, 0.9);
 
     --font-family-main: Verdana, Geneva, sans-serif;
@@ -123,11 +123,12 @@ const { frontmatter } = Astro.props;
   .slot {
     background-color: var(--bg-color-opacity);
     padding: 15px;
-    margin-top: 35px;
+    margin-top: 1px;
   }
 
   .main {
     line-height: var(--line-height-main);
+    margin-top: 35px;
   }
   .slot:target {
     animation-name: flash;
