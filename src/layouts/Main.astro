@@ -57,8 +57,8 @@ const { Content } = await post.render();
   <body class="page">
     <Wallpaper wallpapers={wallpapers} />
     <main id="main-holder" class="wrapper">
-      <TopNav />
       <Header />
+      <TopNav />
       <section id="main" class="main slot">
         <Content />
       </section>
@@ -128,7 +128,6 @@ const { Content } = await post.render();
 
   .main {
     line-height: var(--line-height-main);
-    margin-top: 35px;
   }
   .slot:target {
     animation-name: flash;
