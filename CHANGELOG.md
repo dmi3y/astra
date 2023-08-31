@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0](https://github.com/dmi3y/astra/compare/v1.1.0...v1.2.0) (2023-08-31)
+
+
+### Features
+
+* upgrade astro and everything ([6db25bb](https://github.com/dmi3y/astra/commit/6db25bb7a8e146610917ac0aafba55de191e337b))
+* use content folder ([54ef56d](https://github.com/dmi3y/astra/commit/54ef56d3de7857676fd769d3d532c92b87c27a75))
+
+
+### Bug Fixes
+
+* jumpy walpaper on mobile with/without address bar ([19f4131](https://github.com/dmi3y/astra/commit/19f4131bcb2530aacbc4bbcc6cb0e410f5783c33))
+* move menu bottom of logo ([4ae5b80](https://github.com/dmi3y/astra/commit/4ae5b801dda7f9534524f18f7696847e182e83df))
+
 ## [1.1.0](https://github.com/dmi3y/astra/compare/v1.0.1...v1.1.0) (2023-01-16)
 
 
